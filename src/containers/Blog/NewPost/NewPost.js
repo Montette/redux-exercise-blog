@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import './NewPost.css';
+import { Route, Link } from 'react-router-dom';
 
 class NewPost extends Component {
     state = {
@@ -38,6 +39,7 @@ class NewPost extends Component {
                     <option value="Manu">Manu</option>
                 </select>
                 <button onClick={this.postDataHandler}>Add Post</button>
+
             </div>
         );
     }

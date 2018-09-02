@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Posts from './Posts/Posts';
-import { Route } from 'react-router-dom';
+import { Route, NavLink, Switch } from 'react-router-dom';
+import NewPost from './NewPost/NewPost';
+import FullPost from './FullPost/FullPost';
+
 
 
 
 import './Blog.css';
+
 
 // const getOptions = {
 //     method: 'GET',
@@ -62,16 +66,22 @@ class Blog extends Component {
                     <nav>
                         <ul>
                             <li>
-                                <a href='/'>Home</a>                       
+                               <NavLink to="/" exact>Home</NavLink>                       
                             </li>
                             <li>
-                                <a href='/new-post'>New Post</a>
+                                <NavLink to={{
+                                    pathname: '/new-post'
+                                }}>New post</NavLink>   
                             </li>
                         </ul>
                     </nav>
                 </header>
-                <Route exact path='/' render={()=> <h1>Home</h1>}/>
-                <Route path='/posts' component={Posts}/>
+                <Switch>
+                    <Route exact path='/' component={Posts}/>  
+                    <Route  path='/new-post' component={NewPost}/>
+                    <Route exact path='/:id' exact component={FullPost}/>
+                </Switch>
+                
  
             </div>
         );
